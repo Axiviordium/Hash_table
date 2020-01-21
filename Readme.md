@@ -76,7 +76,7 @@
 
 ![Отображение множества ключей на слоты хэш-таблицы][hash_table]
 
-[hash_table]: Хэш-таблицаК060.bmp
+[hash_table]: Hash_table.bmp
 
 
 
