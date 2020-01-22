@@ -401,7 +401,7 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 
 // Проходим по слотам таблицы, ища свободный  
 // или перезаписываем значение по ключу(если ключ есть в таблице) и выходим 
-	while (cur_item != NULL || cur_item != &HT_DELETED_ITEM) {
+	while (cur_item != NULL && cur_item != &HT_DELETED_ITEM) {
 		if (strcmp(cur_item->key, key) == 0) {
 			ht_del_item(cur_item);
 			ht->items[index] = item;
@@ -413,7 +413,7 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 	}
 
 	// теперь получен индекс пустого слота,
-	// записыыаем элемент, увеличиваем счётчик занятых слотов
+	// записываем элемент, увеличиваем счётчик занятых слотов
 	ht->items[index] = item;
 	ht->count++;
 }
@@ -467,7 +467,7 @@ void ht_delete(ht_hash_table* ht, const char* key) {
                 return;
             }
         }
-        index = ht_get_hash(key, ht->size, i);
+        index = ht_hash(key, ht->size, i);
         item = ht->items[index];
         i++;
 	}
